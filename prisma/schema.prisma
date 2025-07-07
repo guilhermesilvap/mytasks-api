@@ -1,0 +1,51 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+enum taskStatus {
+  pending
+  completed 
+}
+
+enum Color {
+  red       @map("#DC2127")   
+  green       @map("#7AE7BF")  
+  blue       @map("#A4BDFC")   
+  orange      @map("#FF887C")   
+  
+}
+
+
+model User{
+  id String @id @default(uuid())
+  name String 
+  email String @unique
+  password String
+
+  tasks Tasks[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Tasks{
+  id String @id @default(uuid())
+  title String 
+  description String
+  color Color
+  status taskStatus
+
+  userId String @map("user_id")
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+}
