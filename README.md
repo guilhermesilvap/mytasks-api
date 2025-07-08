@@ -15,6 +15,16 @@ A **MyTasks API** é uma aplicação back-end desenvolvida com foco em organiza�
 
 ---
 
+## 🔒 Autenticação
+
+Todas as rotas relacionadas a `/tasks` agora exigem autenticação com **JWT**.
+
+Você deve enviar o token no header da requisição:
+
+```http
+Authorization: Bearer <seu_token_aqui>
+
+
 ## 📁 Rotas da API
 
 ### 🧑‍💻 Autenticação de usuário
@@ -37,10 +47,13 @@ A **MyTasks API** é uma aplicação back-end desenvolvida com foco em organiza�
   → Cria uma nova tarefa.
 
 - `PUT /tasks/:id`  
-  → Atualiza uma tarefa existente.
+  → Atualiza uma tarefa do usuário.
 
 - `DELETE /tasks/:id`  
-  → Remove uma tarefa existente do banco.
+  → Remove uma tarefa do usuário existente no banco.
+
+- `GET /tasks`  
+  → Exibe as tarefas do usuário, tendo a possibilidade de utilizar queries para filtragem.
 
 ---
 
@@ -56,16 +69,8 @@ A **MyTasks API** é uma aplicação back-end desenvolvida com foco em organiza�
 
 ## 📷 Prints ou vídeos do projeto
 
->![image](https://github.com/user-attachments/assets/b576a235-811e-4a89-88fd-6946f5323cde)
+![image](https://github.com/user-attachments/assets/cde3ea97-6972-418c-be94-ca45382477e2)
 
 
----
-
-## 💡 Melhorias futuras
-
-- Adicionar paginação e filtros nas tarefas
-- Criar categorias ou etiquetas para as tasks
-- Criar visualização de histórico por data
 
 ---
-
